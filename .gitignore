@@ -1,0 +1,9 @@
+#### **.gitignore**
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+.prisma/
+postgres_data/
+.vscode
