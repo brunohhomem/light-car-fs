@@ -7,3 +7,4 @@ dist/
 .prisma/
 postgres_data/
 .vscode
+prisma/migrations/
