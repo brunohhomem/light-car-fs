@@ -7,9 +7,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String @unique
-  password String
+model Customer {
+  id    String @id @default(uuid())
+  name  String
+  rides Ride[]
+}
+
+model Driver {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  vehicle     String
+  rating      Float
+  comment     String
+  ratePerKm   Float
+  minDistance Float
+  rides       Ride[]
+}
+
+model Ride {
+  id          Int      @id @default(autoincrement())
+  date        DateTime @default(now())
+  origin      String
+  destination String
+  distance    Float
+  duration    String
+  value       Float
+  customerId  String
+  driverId    Int
+  customer    Customer @relation(fields: [customerId], references: [id])
+  driver      Driver   @relation(fields: [driverId], references: [id])
 }
