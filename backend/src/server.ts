@@ -1,23 +1,21 @@
 import Fastify from 'fastify'
-import { PrismaClient } from '@prisma/client'
+import estimateRide from './routes/estimateRide'
+// import confirmRide from './routes/confirmRide'
+// import getRideHistory from './routes/getRideHistory'
 
-const app = Fastify()
-const prisma = new PrismaClient()
+const fastify = Fastify({ logger: true })
 
-app.get('/', async () => {
-  return { message: 'Hello, Light Car!' }
-})
-
-app.get('/users', async () => {
-  return await prisma.user.findMany()
-})
+// Registrar rotas
+fastify.register(estimateRide, { prefix: '/ride/estimate' })
+// fastify.register(confirmRide, { prefix: '/ride/confirm' })
+// fastify.register(getRideHistory, { prefix: '/ride/:customer_id' })
 
 const start = async () => {
   try {
-    await app.listen({ port: 8080 })
-    console.log('Server running on http://localhost:8080')
+    await fastify.listen({ port: 8080, host: '0.0.0.0' })
+    console.log('Server running: http://localhost:8080')
   } catch (err) {
-    app.log.error(err)
+    fastify.log.error(err)
     process.exit(1)
   }
 }
