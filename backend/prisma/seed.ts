@@ -3,6 +3,16 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function seed() {
+  await prisma.customer.createMany({
+    data: [
+      { id: '7602cec0-06f3-4802-a931-e789820c1387' },
+      { id: 'db978fe5-6a8f-41ae-956c-a57817f85cf3' },
+      { id: '2d11d4b8-c8fc-49eb-82ba-77ce738b0413' },
+      { id: '39a9a9eb-0531-4e99-a1a4-40695eb932af' },
+      { id: '7066e0ff-5de5-41eb-8a68-d2ab87581601' }
+    ]
+  })
+
   const drivers = [
     {
       id: 1,
@@ -42,7 +52,6 @@ async function seed() {
     }
   ]
 
-  // Inserindo motoristas no banco
   for (const driver of drivers) {
     await prisma.driver.upsert({
       where: { id: driver.id },
