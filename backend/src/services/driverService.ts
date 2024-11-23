@@ -20,3 +20,9 @@ export async function getAvailableDrivers(distanceInKm: number) {
     }))
     .sort((a, b) => a.value - b.value) // Ordenar pelo preço mais barato
 }
+
+export async function getDriverById(driverId: number) {
+  return prisma.driver.findUnique({
+    where: { id: driverId }
+  })
+}

@@ -1,3 +1,5 @@
 export * from './driverService'
 export * from './googleMapsService'
 export * from './validadeRequest'
+export * from './validateConfirmRide'
+export * from './saveRideService'
