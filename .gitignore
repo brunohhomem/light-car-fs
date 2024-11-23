@@ -8,3 +8,16 @@ dist/
 postgres_data/
 .vscode
 /backend/prisma/migrations
+/frontend/.next
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
