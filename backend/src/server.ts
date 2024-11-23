@@ -1,14 +1,14 @@
 import Fastify from 'fastify'
 import estimateRide from './routes/estimateRideRoute'
 import confirmRide from './routes/confirmRideRoute'
-// import getRideHistory from './routes/getRideHistory'
+import getRideHistory from './routes/getRideHistoryRoute'
 
 const fastify = Fastify({ logger: true })
 
 // Registrar rotas
 fastify.register(estimateRide, { prefix: '/ride/estimate' })
 fastify.register(confirmRide, { prefix: '/ride/confirm' })
-// fastify.register(getRideHistory, { prefix: '/ride/:customer_id' })
+fastify.register(getRideHistory, { prefix: '/ride' }) // Corrigido o prefixo aqui
 
 const start = async () => {
   try {
