@@ -14,8 +14,13 @@ const estimateRide = async (fastify: FastifyInstance) => {
     try {
       validateRequest(body)
 
-      const { startLocation, endLocation, distanceInKm, duration } =
-        await fetchRouteFromGoogle(body.origin, body.destination)
+      const {
+        startLocation,
+        endLocation,
+        distanceInKm,
+        duration,
+        routeResponse
+      } = await fetchRouteFromGoogle(body.origin, body.destination)
 
       const availableDrivers = await getAvailableDrivers(distanceInKm)
 
@@ -24,7 +29,8 @@ const estimateRide = async (fastify: FastifyInstance) => {
         destination: endLocation,
         distance: distanceInKm,
         duration,
-        options: availableDrivers
+        options: availableDrivers,
+        routeResponse
       })
     } catch (error) {
       if (error instanceof AppError) {

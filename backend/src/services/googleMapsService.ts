@@ -34,6 +34,7 @@ export async function fetchRouteFromGoogle(
       longitude: route.legs[0].end_location.lng
     },
     distanceInKm: distanceInMeters / 1000,
-    duration
+    duration,
+    routeResponse: googleResponse.data
   }
 }
