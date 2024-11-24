@@ -11,3 +11,13 @@ export interface Driver {
   minDistance: number
   rides?: Ride[]
 }
+
+export interface DriverProps {
+  id: number
+  name: string
+  description: string
+  vehicle: string
+  rating: number
+  min_distance: number
+  value: number
+}

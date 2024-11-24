@@ -11,9 +11,15 @@ import {
 } from './ui/dialog'
 import { Input } from './ui/input'
 import { estimateRide } from '@/service/routes-service'
+import { DriverProps } from '../../../types'
 
-export default function NewRideModal() {
+interface NewRideModalProps {
+  onEstimate: (drivers: DriverProps[]) => void
+}
+
+export default function NewRideModal({ onEstimate }: NewRideModalProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleEstimate = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -27,6 +33,8 @@ export default function NewRideModal() {
       return
     }
 
+    setIsLoading(true)
+
     try {
       const response = await estimateRide({
         customer_id,
@@ -36,10 +44,15 @@ export default function NewRideModal() {
 
       console.log('Resposta da API:', response)
 
+      // Passando os motoristas para a `home`
+      onEstimate(response.options)
+
       setIsOpen(false)
     } catch (error) {
       console.error('Erro ao estimar corrida:', error)
       alert('Erro ao estimar corrida')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -101,8 +114,8 @@ export default function NewRideModal() {
                 />
               </div>
               <DialogFooter>
-                <Button type="submit" variant="default">
-                  Estimar Valor
+                <Button type="submit" variant="default" disabled={isLoading}>
+                  {isLoading ? 'Carregando...' : 'Estimar Valor'}
                 </Button>
                 <Button
                   type="button"
