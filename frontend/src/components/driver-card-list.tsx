@@ -1,5 +1,5 @@
 import { DriverProps } from '../../../types'
-import Driver from './driver'
+import Driver from './driver-card'
 
 interface DriverListProps {
   drivers: DriverProps[] // Lista de motoristas tipada

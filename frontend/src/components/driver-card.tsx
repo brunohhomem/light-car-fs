@@ -9,21 +9,25 @@ import {
 import { Button } from './ui/button'
 import { DriverProps } from '../../../types'
 
-export default function Driver({
+export default function DriverCard({
+  id,
   name,
   description,
   vehicle,
-  rating,
+  review,
   min_distance,
   value
 }: DriverProps) {
   return (
-    <Card className="w-[400px] shadow-xl rounded-lg border border-gray-200">
+    <Card
+      className="w-[400px] shadow-xl rounded-lg border border-gray-300"
+      key={id}
+    >
       <CardHeader className="space-y-2">
-        <CardTitle className="text-lg font-semibold text-gray-700 text-center">
+        <CardTitle className="text-lg font-semibold text-gray-800">
           {name || 'Nome Indisponível'}
         </CardTitle>
-        <CardDescription className="text-sm text-gray-600 text-justify">
+        <CardDescription className="text-sm text-gray-600">
           {description || 'Descrição não disponível'}
         </CardDescription>
       </CardHeader>
@@ -36,7 +40,9 @@ export default function Driver({
           <div className="flex">
             <p className="text-sm font-medium text-gray-700">Avaliação:</p>
             <p className="text-sm text-gray-600">
-              {rating !== undefined ? `${rating.toFixed(1)}/5` : 'N/A'}
+              {review.rating !== undefined
+                ? `${review.rating.toFixed(1)}/5`
+                : 'N/A'}
             </p>
           </div>
           <div className="flex">
@@ -50,7 +56,7 @@ export default function Driver({
             </p>
           </div>
           <div className="flex">
-            <p className="text-sm font-medium text-gray-700">Taxa por km:</p>
+            <p className="text-sm font-medium text-gray-700">Total:</p>
             <p className="text-sm text-gray-600">
               {value !== undefined ? `R$ ${value.toFixed(2)}` : 'N/A'}
             </p>

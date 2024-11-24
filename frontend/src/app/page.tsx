@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import NewRideModal from '@/components/new-ride-modal'
-import DriverList from '@/components/driver-list'
+import DriverList from '@/components/driver-card-list'
 import { DriverProps } from '../../../types'
 
 export default function Home() {

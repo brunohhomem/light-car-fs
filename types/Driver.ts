@@ -17,7 +17,10 @@ export interface DriverProps {
   name: string
   description: string
   vehicle: string
-  rating: number
+  review: {
+    rating: number
+    comment: string
+  }
   min_distance: number
   value: number
 }
