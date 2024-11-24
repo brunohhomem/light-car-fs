@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 const getRides = async (fastify: FastifyInstance) => {
-  fastify.get('/ride/:customer_id', async (request, response) => {
+  fastify.get('/:customer_id', async (request, response) => {
     // Rota corrigida
     const { customer_id } = request.params as { customer_id: string }
     const { driver_id } = request.query as { driver_id?: string }
