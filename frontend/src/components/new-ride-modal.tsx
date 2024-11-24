@@ -10,21 +10,37 @@ import {
   DialogFooter
 } from './ui/dialog'
 import { Input } from './ui/input'
+import { estimateRide } from '@/service/routes-service'
 
 export default function NewRideModal() {
   const [isOpen, setIsOpen] = useState(false)
 
-  // Função para lidar com o envio do formulário
-  const handleEstimate = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleEstimate = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
-    const userId = formData.get('userId')?.toString()
+    const customer_id = formData.get('userId')?.toString()
     const origin = formData.get('origin')?.toString()
     const destination = formData.get('destination')?.toString()
 
-    console.log('Dados enviados:', { userId, origin, destination })
-    alert('Estimativa enviada para o console.')
-    setIsOpen(false) // Fecha o modal após envio
+    if (!customer_id || !origin || !destination) {
+      alert('Por favor, preencha todos os campos')
+      return
+    }
+
+    try {
+      const response = await estimateRide({
+        customer_id,
+        origin,
+        destination
+      })
+
+      console.log('Resposta da API:', response)
+
+      setIsOpen(false)
+    } catch (error) {
+      console.error('Erro ao estimar corrida:', error)
+      alert('Erro ao estimar corrida')
+    }
   }
 
   return (
