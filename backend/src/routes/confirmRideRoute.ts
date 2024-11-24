@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify'
 import { validateConfirmRide, saveRide, getDriverById } from '../services/index'
-import { ConfirmRideProps } from '../types/index'
+import { ConfirmRideProps } from '../../../types/index'
 import { AppError } from '../utils/AppError'
 
 const confirmRide = async (fastify: FastifyInstance) => {

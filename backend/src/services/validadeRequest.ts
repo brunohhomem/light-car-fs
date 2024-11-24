@@ -1,4 +1,4 @@
-import { EstimateRideProps } from '../types/EstimateRide'
+import { EstimateRideProps } from '../../../types/EstimateRide'
 import { AppError } from '../utils/AppError'
 
 export function validateRequest(body: EstimateRideProps) {

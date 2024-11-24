@@ -11,6 +11,6 @@ export interface Ride {
   value: number
   customerId: string
   driverId: number
-  customer?: Customer // Relacionamento opcional
-  driver?: Driver // Relacionamento opcional
+  customer?: Customer
+  driver?: Driver
 }

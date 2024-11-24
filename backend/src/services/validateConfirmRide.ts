@@ -1,4 +1,4 @@
-import { ConfirmRideProps } from '../types/index'
+import { ConfirmRideProps } from '../../../types/index'
 import { AppError } from '../utils/AppError'
 
 export function validateConfirmRide(body: ConfirmRideProps) {

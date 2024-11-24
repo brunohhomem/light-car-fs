@@ -4,7 +4,7 @@ import {
   fetchRouteFromGoogle,
   getAvailableDrivers
 } from '../services/index'
-import { EstimateRideProps } from '../types/index'
+import { EstimateRideProps } from '../../../types/index'
 import { AppError } from '../utils/AppError'
 
 const estimateRide = async (fastify: FastifyInstance) => {
