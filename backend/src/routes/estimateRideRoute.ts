@@ -25,6 +25,7 @@ const estimateRide = async (fastify: FastifyInstance) => {
       const availableDrivers = await getAvailableDrivers(distanceInKm)
 
       return response.send({
+        customer_id: body.customer_id,
         origin: startLocation,
         destination: endLocation,
         distance: distanceInKm,
