@@ -1,6 +1,4 @@
 import Image from 'next/image'
-import { Button } from './ui/button'
-import NewRideModal from './new-ride-modal'
 
 export default function Banner() {
   return (
@@ -8,12 +6,7 @@ export default function Banner() {
       <div className="flex items-center">
         <Image src="/logo.png" alt="logo" width={200} height={200} />
       </div>
-      <div className="flex gap-4">
-        <NewRideModal />
-        <Button className="sm:w-auto" variant="outline">
-          Histórico
-        </Button>
-      </div>
+      <div className="flex gap-4"></div>
     </div>
   )
 }
