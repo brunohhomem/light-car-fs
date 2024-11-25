@@ -11,7 +11,7 @@ import {
 } from './ui/dialog'
 import { Input } from './ui/input'
 import { estimateRide } from '@/service/routes-service'
-import { DriverProps } from '../../../types'
+import { DriverProps } from '../../types'
 
 interface NewRideModalProps {
   onEstimate: (drivers: DriverProps[]) => void

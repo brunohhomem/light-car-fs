@@ -1,4 +1,4 @@
-import { ConfirmRideProps, EstimateRideProps } from '../../../types/index'
+import { ConfirmRideProps, EstimateRideProps } from '../../types'
 import api from './api'
 
 export const estimateRide = async (data: EstimateRideProps) => {

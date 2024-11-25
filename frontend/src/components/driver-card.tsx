@@ -10,8 +10,8 @@ import {
 } from '@/components/ui/card'
 import { Button } from './ui/button'
 import { useState } from 'react'
-import { DriverProps } from '../../../types'
 import ConfirmRideModal from './confirm-ride-modal'
+import { DriverProps } from '../../types'
 
 export default function DriverCard(driver: DriverProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)

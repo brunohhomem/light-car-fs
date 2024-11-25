@@ -3,7 +3,6 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export async function getAvailableDrivers(distanceInKm: number) {
-  // Certifique-se de que está incluindo `minDistance` no retorno do banco
   const drivers = await prisma.driver.findMany({
     select: {
       id: true,
@@ -13,13 +12,12 @@ export async function getAvailableDrivers(distanceInKm: number) {
       rating: true,
       comment: true,
       ratePerKm: true,
-      minDistance: true // Incluindo o campo `minDistance`
+      minDistance: true
     }
   })
 
-  // Filtrar e mapear os dados
   return drivers
-    .filter(driver => driver.minDistance <= distanceInKm) // Filtra motoristas pela distância mínima
+    .filter(driver => driver.minDistance <= distanceInKm)
     .map(driver => ({
       id: driver.id,
       name: driver.name,
@@ -29,10 +27,10 @@ export async function getAvailableDrivers(distanceInKm: number) {
         rating: driver.rating,
         comment: driver.comment
       },
-      min_distance: driver.minDistance, // Inclui a distância mínima no retorno
+      min_distance: driver.minDistance,
       value: parseFloat((driver.ratePerKm * distanceInKm).toFixed(2))
     }))
-    .sort((a, b) => a.value - b.value) // Ordena por valor da corrida
+    .sort((a, b) => a.value - b.value)
 }
 
 export async function getDriverById(driverId: number) {

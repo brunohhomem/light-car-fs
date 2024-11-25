@@ -11,16 +11,16 @@ const getRides = async (fastify: FastifyInstance) => {
 
     try {
       if (!customer_id || customer_id.trim() === '') {
-        return response.status(400).send({
-          error_code: 'INVALID_CUSTOMER_ID',
-          error_description: 'O ID do cliente não pode estar em branco.'
+        return response.status(404).send({
+          error_code: 'NO_RIDES_FOUND',
+          error_description: 'Nenhum registro encontrado'
         })
       }
 
       if (driver_id && isNaN(Number(driver_id))) {
         return response.status(400).send({
           error_code: 'INVALID_DRIVER',
-          error_description: 'O ID do motorista informado não é válido.'
+          error_description: 'Motorista inválido'
         })
       }
 
@@ -45,7 +45,7 @@ const getRides = async (fastify: FastifyInstance) => {
       if (rides.length === 0) {
         return response.status(404).send({
           error_code: 'NO_RIDES_FOUND',
-          error_description: 'Nenhuma viagem encontrada para este cliente.'
+          error_description: 'Nenhum registro encontrado.'
         })
       }
 

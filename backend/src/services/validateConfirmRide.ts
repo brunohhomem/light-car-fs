@@ -1,4 +1,4 @@
-import { ConfirmRideProps } from '../../../types/index'
+import { ConfirmRideProps } from '../types/index'
 import { AppError } from '../utils/AppError'
 
 export function validateConfirmRide(body: ConfirmRideProps) {
@@ -25,7 +25,7 @@ export function validateConfirmRide(body: ConfirmRideProps) {
     !value
   ) {
     throw new AppError(
-      'Preencha todos os campos obrigatórios.',
+      'Os dados fornecidos no corpo da requisição são inválidos',
       400,
       'INVALID_DATA'
     )
@@ -33,7 +33,7 @@ export function validateConfirmRide(body: ConfirmRideProps) {
 
   if (origin === destination) {
     throw new AppError(
-      'A origem e o destino devem ser diferentes.',
+      'Os dados fornecidos no corpo da requisição são inválidos',
       400,
       'INVALID_DATA'
     )
@@ -41,7 +41,7 @@ export function validateConfirmRide(body: ConfirmRideProps) {
 
   if (!driver || !driver.id || !driver.name) {
     throw new AppError(
-      'Dados do motorista são obrigatórios.',
+      'Os dados fornecidos no corpo da requisição são inválidos',
       400,
       'INVALID_DRIVER'
     )

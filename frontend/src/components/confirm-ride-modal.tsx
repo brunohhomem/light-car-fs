@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { confirmRide } from '@/service/routes-service'
-import { DriverProps } from '../../../types'
+import { DriverProps } from '../../types'
 
 interface ConfirmRideModalProps {
   driver: DriverProps

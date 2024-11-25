@@ -1,4 +1,4 @@
-import { DriverProps } from '../../../types'
+import { DriverProps } from '../../types'
 import Driver from './driver-card'
 
 interface DriverListProps {

@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify'
 import { validateConfirmRide, saveRide, getDriverById } from '../services/index'
-import { ConfirmRideProps } from '../../../types/index'
+import { ConfirmRideProps } from '../types/index'
 import { AppError } from '../utils/AppError'
 
 const confirmRide = async (fastify: FastifyInstance) => {
@@ -18,13 +18,13 @@ const confirmRide = async (fastify: FastifyInstance) => {
 
       if (body.distance < driver.minDistance) {
         throw new AppError(
-          'A distância da viagem é menor do que a mínima aceita pelo motorista.',
+          'Quilometragem inválida para o motorista',
           400,
           'INVALID_DISTANCE'
         )
       }
 
-      const ride = await saveRide({
+      await saveRide({
         customer_id: body.customer_id,
         origin: body.origin,
         destination: body.destination,
@@ -35,8 +35,7 @@ const confirmRide = async (fastify: FastifyInstance) => {
       })
 
       return response.send({
-        success: true,
-        ride
+        success: true
       })
     } catch (error) {
       if (error instanceof AppError) {

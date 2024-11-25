@@ -3,9 +3,9 @@
 import { useState } from 'react'
 import NewRideModal from '@/components/new-ride-modal'
 import DriverList from '@/components/driver-card-list'
-import { DriverProps } from '../../../types'
 import HistoryModal from '@/components/history-modal'
 import Image from 'next/image'
+import { DriverProps } from '../../types'
 
 export default function Home() {
   const [drivers, setDrivers] = useState<DriverProps[]>([])
