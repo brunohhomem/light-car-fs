@@ -23,4 +23,6 @@ export interface DriverProps {
   }
   min_distance: number
   value: number
+  duration: string
+  distance: number
 }

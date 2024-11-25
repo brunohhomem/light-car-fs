@@ -1,6 +1,6 @@
 'use client'
 
-import { Dialog, DialogContent, DialogTitle } from '@radix-ui/react-dialog'
+import { Dialog, DialogContent, DialogTitle } from './ui/dialog'
 import { Button } from './ui/button'
 import { DialogFooter, DialogHeader } from './ui/dialog'
 import { Input } from './ui/input'
