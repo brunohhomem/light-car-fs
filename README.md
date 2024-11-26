@@ -11,7 +11,7 @@
 1. Clone o repositório:
 
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/brunohhomem/light-car-fs.git
    cd light-car
 
 2. Crie os arquivos .env a partir dos exemplos:
