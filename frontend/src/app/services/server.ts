@@ -18,10 +18,10 @@ export const confirmRide = async (data: ConfirmRideProps) => {
   return response.data
 }
 
-// export async function getRideHistory(customer_id: string, driver_id?: number) {
-//   const query = driver_id ? `?driver_id=${driver_id}` : ''
-//   const response = await api.get(`/ride/${customer_id}${query}`)
-//   return response.data
-// }
+export async function getRideHistory(customer_id: string, driver_id?: number) {
+  const query = driver_id ? `?driver_id=${driver_id}` : ''
+  const response = await api.get(`/ride/${customer_id}${query}`)
+  return response.data
+}
 
 export default api
