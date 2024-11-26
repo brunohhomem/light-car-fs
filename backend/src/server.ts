@@ -7,7 +7,7 @@ import getRideHistory from './routes/getRideHistoryRoute'
 const fastify = Fastify({ logger: true })
 
 fastify.register(cors, {
-  origin: 'http://localhost:3000', // Permitir apenas o frontend específico
+  origin: true, // Permitir apenas o frontend específico
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Métodos permitidos
   allowedHeaders: ['Content-Type'] // Cabeçalhos permitidos
 })
