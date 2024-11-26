@@ -7,19 +7,33 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { Button } from './ui/button'
+import { DriverOption, EstimateRideResponse } from '@/types'
 
-export default function DriverCard() {
+export default function DriverCard({
+  driver,
+  estimateData,
+  onSelect
+}: {
+  driver: DriverOption
+  estimateData: EstimateRideResponse
+  onSelect: (driver: DriverOption, estimateData: EstimateRideResponse) => void
+}) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Homer Simpson</CardTitle>
-        <CardDescription>Descrição</CardDescription>
+        <CardTitle>{driver.name}</CardTitle>
+        <CardDescription>{driver.description}</CardDescription>
       </CardHeader>
       <CardContent>
         <p>Dados do Homer</p>
       </CardContent>
       <CardFooter>
-        <Button variant="outline">Selecionar</Button>
+        <Button
+          variant="outline"
+          onClick={() => onSelect(driver, estimateData)}
+        >
+          Selecionar
+        </Button>
       </CardFooter>
     </Card>
   )

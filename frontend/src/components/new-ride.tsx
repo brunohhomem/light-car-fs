@@ -16,13 +16,22 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@radix-ui/react-label'
 import { useState } from 'react'
 import { estimateRide } from '@/app/services/server'
+import { DriverOption, EstimateRideResponse } from '@/types'
 
-export default function NewRide() {
+export default function NewRide({
+  setDrivers,
+  setEstimateData
+}: {
+  setDrivers: (drivers: DriverOption[]) => void
+  setEstimateData: (data: EstimateRideResponse | null) => void
+}) {
   const [formData, setFormData] = useState({
     customer_id: '',
     origin: '',
     destination: ''
   })
+
+  const [isModalOpen, setIsModalOpen] = useState(false) // Controle do modal
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -42,17 +51,31 @@ export default function NewRide() {
       return
     }
 
-    const request = await estimateRide(formData)
+    try {
+      const response = await estimateRide(formData)
 
-    console.log(request)
+      if (response?.options) {
+        console.log(response)
+
+        setDrivers(response.options)
+        setEstimateData(response) // Atualiza a lista de motoristas
+        setIsModalOpen(false) // Fecha o modal
+      } else {
+        alert('Nenhum motorista encontrado.')
+      }
+    } catch (error) {
+      console.error('Erro ao estimar corrida:', error)
+      alert('Erro ao estimar corrida. Tente novamente.')
+    }
   }
 
   return (
-    <Dialog>
+    <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogTrigger asChild>
         <Button
           variant="default"
           className="bg-blue-400 shadow-lg hover:bg-white hover:text-blue-400"
+          onClick={() => setIsModalOpen(true)} // Abre o modal
         >
           Nova Corrida
           <Car />
