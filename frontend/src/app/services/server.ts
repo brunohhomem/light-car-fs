@@ -1,4 +1,4 @@
-import { EstimateRideProps } from '@/types'
+import { ConfirmRideProps, EstimateRideProps } from '@/types'
 import { EstimateRideResponse } from '@/types'
 import axios from 'axios'
 
@@ -13,10 +13,10 @@ export const estimateRide = async (
   return response.data
 }
 
-// export const confirmRide = async (data: ConfirmRideProps) => {
-//   const response = await api.patch('/ride/confirm', data)
-//   return response.data
-// }
+export const confirmRide = async (data: ConfirmRideProps) => {
+  const response = await api.patch('/ride/confirm', data)
+  return response.data
+}
 
 // export async function getRideHistory(customer_id: string, driver_id?: number) {
 //   const query = driver_id ? `?driver_id=${driver_id}` : ''

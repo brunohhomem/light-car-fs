@@ -11,7 +11,7 @@ export default function DriverCardList({
   onSelect: (driver: DriverOption, estimateData: EstimateRideResponse) => void
 }) {
   return (
-    <div className="grid gap-4">
+    <div className="flex flex-col gap-2 pl-4">
       {drivers.map(driver => (
         <DriverCard
           key={driver.id}
